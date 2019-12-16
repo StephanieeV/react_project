@@ -6,7 +6,7 @@ import NavigationMeteoMars from "./Navigation/NavigationMeteoMars";
 
 export default class App extends React.Component {
   render() {
-    return <NavigationSearchPlanet />;
+    return <NavigationAccueil />;
   }
 }
 
