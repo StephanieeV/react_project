@@ -1,4 +1,4 @@
-// afficher l'imae du jour
+// afficher l'image du jour
 import React from "react";
 
 import {
