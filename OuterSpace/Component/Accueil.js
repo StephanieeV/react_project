@@ -8,31 +8,25 @@ import {
   Image
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Button } from 'galio-framework';
+import { Button, Block } from 'galio-framework';
+import { AuthSession } from "expo";
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {item: '', content: false};
   }
-  componentHideAndShow = () => {
-    this.setState(previousState => ({ content: !previousState.content }))
-  }
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
-        <Text>Image du jour du : {this.state.item.date}</Text>
-        <Text>Titre : {this.state.item.title}</Text>
+        <Text style={styles.date}>Image du {this.state.item.date}</Text>
+        <Text style={styles.title}>{this.state.item.title}</Text>
         <Image 
           style={styles.stretch}
           source={{uri: this.state.item.url}}
           PlaceholderContent={<ActivityIndicator />}
         />
-
-        {
-        this.state.content ? <Text> {this.state.item.explanation} </Text> : null
-        }
-        <Button round size="small" color="#808080" type="outline" onPress={() => { this.props.navigation.navigate("DetailsAccueil");}}>Afficher l'explication</Button>
+        <Button style={styles.button} round size="small" color="#808080" onPress={() => { this.props.navigation.navigate("DetailsAccueil");}}>Afficher l'explication</Button>
         </ScrollView>
       </View>
     );
@@ -54,12 +48,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
     marginTop: 20,
   },
   stretch: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
     resizeMode: 'stretch',
-  }
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  title: {
+    marginBottom: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  date: {
+    marginBottom: 20,
+    fontSize: 15,
+    textAlign: 'center',
+  },
+  button: {
+    marginTop: 50,
+    marginLeft: 50,
+  },
 });

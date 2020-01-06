@@ -12,21 +12,18 @@ export default class Search extends React.Component {
     super(props);
     this.state = {item: '', content: false};
   }
-  componentHideAndShow = () => {
-    this.setState(previousState => ({ content: !previousState.content }))
-  }
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
         
-        <Text>{this.state.item.title}</Text>
+        <Text style={styles.title}>{this.state.item.title}</Text>
         <Image 
           style={styles.stretch}
           source={{uri: this.state.item.url}}
           PlaceholderContent={<ActivityIndicator />}
         />
-        <Text>{this.state.item.explanation}</Text>
+        <Text style={styles.text}>{this.state.item.explanation}</Text>
         </ScrollView>
       </View>
     );
@@ -48,12 +45,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
     marginTop: 20,
   },
   stretch: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
     resizeMode: 'stretch',
+    alignItems: 'center',
+    marginLeft: 40,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  text: {
+    marginTop: 30,
+    marginBottom: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    textAlign: 'justify',
   }
 });
