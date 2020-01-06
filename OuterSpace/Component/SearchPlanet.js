@@ -28,42 +28,51 @@ export default class Search extends React.Component {
   render() {
     return (
       <View>
-        <Text>Choisissez une planète pour afficher ses informations !</Text>
-        <TextInput
-          style={{ width: 120 }}
-          placeholder="Saisir une planète"
-          onChangeText={text => this.setState({ text })}
-        ></TextInput>
-        <Button onPress={text => this.getPlanet()} title="Rechercher"></Button>
-
-        {/* <FlatList
+        <View style={styles.container}>
+          <Text style={styles.policeText}>
+            Choisissez une planète pour afficher ses informations !
+          </Text>
+          <TextInput
+            style={(styles.policeText, styles.input)}
+            placeholder="Saisir une planète"
+            onChangeText={text => this.setState({ text })}
+          ></TextInput>
+          <Button
+            onPress={text => this.getPlanet()}
+            title="Rechercher"
+          ></Button>
+        </View>
+        <FlatList
           data={this.state.planètes}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <View>
-              <Text
-                onPress={() =>
-                  Linking.openURL(this.test_lien(item.saleInfo.buyLink))
-                }
-              >
-                Nom: {item.volumeInfo.title}
+            <View style={styles.infos}>
+              <Text style={styles.policeText}>
+                Host Name: {item.pl_hostname}
               </Text>
-              <View style={styles.vue_image}>
-                <Image
-                  style={styles.image}
-                  source={this.test_img(item.volumeInfo.imageLinks)}
-                />
-              </View>
-
+              <Text style={styles.policeText}>
+                Planet Letter: {item.pl_letter}
+              </Text>
+              <Text style={styles.policeText}>Planet Name: {item.pl_name}</Text>
+              <Text style={styles.policeText}>
+                Discovery Mode: {item.pl_discmethod}
+              </Text>
+              <Text style={styles.policeText}>
+                Orbital Period (days): {item.pl_orbper}
+              </Text>
+              <Text style={styles.policeText}>
+                Date of Last Update: {item.rowupdate}
+              </Text>
+              {/* 
               <Button
                 onPress={() => {
                   this.props.navigation.navigate("Details");
                 }}
                 title="details"
-              ></Button>
+              ></Button> */}
             </View>
           )}
-        /> */}
+        />
       </View>
     );
   }
@@ -105,14 +114,33 @@ export default class Search extends React.Component {
       "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=JSON&where=pl_hostname like '" +
         this.state.text +
         "'"
+
+      //"https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=JSON&where=pl_hostname like 'Kepler-87'"
     )
       .then(response => response.json())
       .then(responseJson => {
-        alert(responseJson);
-        this.setState({ planètes: responseJson.items });
+        this.setState({ planètes: responseJson });
       })
       .catch(error => {
         console.error(error);
       });
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20
+  },
+  infos: {
+    marginBottom: 10,
+    marginLeft: 5
+  },
+  policeText: {
+    fontFamily: "Verdana"
+  },
+  input: {
+    width: 150
+  }
+});
