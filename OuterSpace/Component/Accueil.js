@@ -4,11 +4,11 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  Button
+  ActivityIndicator,
+  Image
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-
+import { Button } from 'galio-framework';
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -26,13 +26,13 @@ export default class Search extends React.Component {
         <Image 
           style={styles.stretch}
           source={{uri: this.state.item.url}}
+          PlaceholderContent={<ActivityIndicator />}
         />
 
         {
         this.state.content ? <Text> {this.state.item.explanation} </Text> : null
-        } 
-        <Button onPress={this.componentHideAndShow} title="Afficher l'explication"></Button>
-
+        }
+        <Button round size="small" color="#808080" type="outline" onPress={this.componentHideAndShow}>Afficher l'explication</Button>
         </ScrollView>
       </View>
     );
