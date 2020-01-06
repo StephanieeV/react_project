@@ -1,22 +1,47 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import NavigationAccueil from "./Navigation/NavigationAccueil";
-import NavigationSearchPlanet from "./Navigation/NavigationSearchPlanet";
-import NavigationMeteoMars from "./Navigation/NavigationMeteoMars";
-import TabNavigation from "./Navigation/TabNavigation";
-import StackNavigation from "./Navigation/StackNavigation";
+import Accueil from "./Component/Accueil";
+import MeteoMars from "./Component/MeteoMars";
+import { createAppContainer } from "react-navigation";
+import SearchPlanet from "./Component/SearchPlanet";
+import DetailsAccueil from "./Component/DetailsAccueil";
+import { createStackNavigator } from "react-navigation-stack";
 
-export default class App extends React.Component {
-  render() {
-    return (<TabNavigation />), (<StackNavigation />);
-  }
-}
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+const AccueilStackNavigator = createStackNavigator({
+  Accueil: {
+    screen: Accueil,
+    navigationOptions: {
+      title: "Accueil"
+    }
+  },
+  DetailsAccueil: {
+    screen: DetailsAccueil,
+    navigationOptions: {
+      title: "Description"
+    }
   }
 });
+const MeteoMarsStackNavigator = createStackNavigator({
+  MeteoMars: {
+    screen: MeteoMars,
+    navigationOptions: {
+      title: "Meteo sur mars"
+    }
+  }
+});
+const SearchPlanetStackNavigator = createStackNavigator({
+  SearchPlanet: {
+    screen: SearchPlanet,
+    navigationOptions: {
+      title: "Recherche de planète"
+    }
+  }
+});
+
+const BottomTabNavigator = createBottomTabNavigator({
+  Accueil: AccueilStackNavigator,
+  MeteoMars: MeteoMarsStackNavigator,
+  SearchPlanet: SearchPlanetStackNavigator
+});
+
+export default createAppContainer(BottomTabNavigator);
