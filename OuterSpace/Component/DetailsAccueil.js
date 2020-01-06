@@ -1,4 +1,3 @@
-// Affiche l'image du jour
 import React from "react";
 import {
   StyleSheet,
@@ -8,7 +7,6 @@ import {
   Image
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Button } from 'galio-framework';
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -21,18 +19,14 @@ export default class Search extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-        <Text>Image du jour du : {this.state.item.date}</Text>
-        <Text>Titre : {this.state.item.title}</Text>
+        
+        <Text>{this.state.item.title}</Text>
         <Image 
           style={styles.stretch}
           source={{uri: this.state.item.url}}
           PlaceholderContent={<ActivityIndicator />}
         />
-
-        {
-        this.state.content ? <Text> {this.state.item.explanation} </Text> : null
-        }
-        <Button round size="small" color="#808080" type="outline" onPress={() => { this.props.navigation.navigate("DetailsAccueil");}}>Afficher l'explication</Button>
+        <Text>{this.state.item.explanation}</Text>
         </ScrollView>
       </View>
     );
