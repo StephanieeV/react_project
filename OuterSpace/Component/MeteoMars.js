@@ -15,17 +15,16 @@ import {
 } from "react-native";
 
 export default class Search extends React.Component {
-    render() {
-        return (
-            <View>
-                <Text>Météo de Mars</Text>
-                <Text>Dernier Jour validé</Text>
-                
-                <Text>Météo de la semaine passée</Text>
+  render() {
+    return (
+      <View>
+        <Text>Météo de Mars</Text>
+        <Text>Dernier Jour validé</Text>
 
-                <Text>Bilan des données météorologique de la semaine</Text>
-                <Table></Table>
-            </View>
+        <Text>Météo de la semaine passée</Text>
+
+        <Text>Bilan des données météorologique de la semaine!</Text>
+      </View>
     );
   }
 }
