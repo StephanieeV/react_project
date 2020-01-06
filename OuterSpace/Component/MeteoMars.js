@@ -30,8 +30,8 @@ export default class Search extends React.Component {
       <View>
         <Text>Météo de Mars</Text>
         <View>
-          <Text>Dernier Jour validé : sol n°{this.getSolKey()}</Text>
-          <Text>{this.getTemperature()}</Text>
+          {/* <Text>Dernier Jour validé : sol n°{this.getSolKey()}</Text>
+          <Text>{this.getTemperature()}</Text> */}
           <Text>Météo de la semaine passée</Text>
           <Text>Bilan des données météorologique de la semaine</Text>
         </View>

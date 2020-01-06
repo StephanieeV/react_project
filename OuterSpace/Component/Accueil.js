@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, ActivityIndicator, Image } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
 import { Button } from "galio-framework";
+
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
