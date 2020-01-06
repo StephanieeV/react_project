@@ -1,10 +1,10 @@
 // Affiche l'image du jour
 import React from "react";
 
-import { StyleSheet, Text, View, ActivityIndicator, Image } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Image } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
-import { Button } from 'galio-framework';
+import { Button, Text } from 'galio-framework';
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -15,8 +15,8 @@ export default class Search extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-        <Text style={styles.date}>Image du {this.state.item.date}</Text>
-        <Text style={styles.title}>{this.state.item.title}</Text>
+        <Text muted style={styles.date}>Image du {this.state.item.date}</Text>
+        <Text h5 bold style={styles.title}>{this.state.item.title}</Text>
         <Image 
           style={styles.stretch}
           source={{uri: this.state.item.url}}
@@ -57,13 +57,10 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 20,
-    fontSize: 20,
-    fontWeight: 'bold',
     textAlign: 'center',
   },
   date: {
     marginBottom: 20,
-    fontSize: 15,
     textAlign: 'center',
   },
   button: {

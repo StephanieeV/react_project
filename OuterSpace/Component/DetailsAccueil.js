@@ -1,7 +1,8 @@
 // Affiche les détails de l'accueil
 import React from "react";
-import { StyleSheet, Text, View, ActivityIndicator, Image } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { Text } from 'galio-framework';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Search extends React.Component {
       <View style={styles.container}>
         <ScrollView>
         
-        <Text style={styles.title}>{this.state.item.title}</Text>
+        <Text h5 bold style={styles.title}>{this.state.item.title}</Text>
         <Image 
           style={styles.stretch}
           source={{uri: this.state.item.url}}
@@ -53,8 +54,6 @@ const styles = StyleSheet.create({
     marginLeft: 40,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
   },

@@ -7,11 +7,10 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   FlatList,
 } from "react-native";
 
-import { Button } from 'galio-framework';
+import { Button, Input } from 'galio-framework';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -30,12 +29,16 @@ export default class Search extends React.Component {
           <Text style={styles.policeText}>
             Choisissez une planète pour afficher ses informations !
           </Text>
-          <TextInput
+          <Input
             style={(styles.policeText, styles.input)}
+            right
+            icon="search1"
+            family="antdesign"
+            iconSize={14}
             placeholder="Saisir une planète"
             onChangeText={text => this.setState({ text })}
-          ></TextInput>
-          <Button 
+          ></Input>
+          <Button
             style={styles.button}
             round size="small" 
             color="#808080"
@@ -106,9 +109,6 @@ const styles = StyleSheet.create({
   input: {
     marginTop: 30,
     width: 200,
-    borderColor: '#808080', 
-    borderWidth: 1,
-    borderRadius: 20,
     height: 40
   },
   button: {
