@@ -4,10 +4,11 @@ import NavigationAccueil from "./Navigation/NavigationAccueil";
 import NavigationSearchPlanet from "./Navigation/NavigationSearchPlanet";
 import NavigationMeteoMars from "./Navigation/NavigationMeteoMars";
 import TabNavigation from "./Navigation/TabNavigation";
+import StackNavigation from "./Navigation/StackNavigation";
 
 export default class App extends React.Component {
   render() {
-    return <TabNavigation />;
+    return (<TabNavigation />), (<StackNavigation />);
   }
 }
 

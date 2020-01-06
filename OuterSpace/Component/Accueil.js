@@ -1,12 +1,15 @@
 // Affiche l'image du jour
 import React from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 
+import { StyleSheet, Text, View, ActivityIndicator, Image } from "react-native";
+
+import { ScrollView } from "react-native-gesture-handler";
+import { Button } from "galio-framework";
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { item: "", exp: "", content: false };
+
+    this.state = { item: "", content: false };
   }
   componentHideAndShow = () => {
     this.setState(previousState => ({ content: !previousState.content }));
@@ -15,23 +18,28 @@ export default class Search extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <Text>Image du jour du {this.state.item.date}</Text>
+          <Text>Image du jour du : {this.state.item.date}</Text>
           <Text>Titre : {this.state.item.title}</Text>
-          <Image style={styles.stretch} source={{ uri: this.state.item.url }} />
+          <Image
+            style={styles.stretch}
+            source={{ uri: this.state.item.url }}
+            PlaceholderContent={<ActivityIndicator />}
+          />
 
           {this.state.content ? (
             <Text> {this.state.item.explanation} </Text>
           ) : null}
           <Button
-            onPress={this.componentHideAndShow}
-            title="Afficher l'explication"
-          ></Button>
-          <Button
+            round
+            size="small"
+            color="#808080"
+            type="outline"
             onPress={() => {
-              this.props.navigation.navigate("SearchPlanet");
+              this.props.navigation.navigate("DetailsAccueil");
             }}
-            title="details"
-          ></Button>
+          >
+            Afficher l'explication
+          </Button>
         </ScrollView>
       </View>
     );
