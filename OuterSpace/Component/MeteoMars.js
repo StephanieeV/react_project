@@ -1,6 +1,17 @@
 // afficher la meteo sur mars
 import React from "react";
-import {  StyleSheet,  Text,  View,  Table,  Image,  TextInput,  FlatList,  Button,  Linking,  WebView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Table,
+  Image,
+  TextInput,
+  FlatList,
+  Button,
+  Linking,
+  WebView
+} from "react-native";
 
 export default class Search extends React.Component {
     constructor(props) {
@@ -37,7 +48,8 @@ export default class Search extends React.Component {
             <Text>Bilan des données météorologique de la semaine</Text>
 
           </View>
-        </View>
+
+        </View>;
   }
 
   componentWillMount() {

@@ -1,4 +1,4 @@
-// vue de la recherche planette
+// vue de la recherche planète
 // mettre un bouton et input comme pour
 // les livres, et afficher une flatlist
 import React from "react";
@@ -7,13 +7,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TextInput,
   FlatList,
-  Button,
-  Linking,
-  WebView
 } from "react-native";
+
+import { Button, Input } from 'galio-framework';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -28,75 +25,53 @@ export default class Search extends React.Component {
   render() {
     return (
       <View>
-        <Text>Choisissez une planète pour afficher ses informations !</Text>
-        <TextInput
-          style={{ width: 120 }}
-          placeholder="Saisir une planète"
-          onChangeText={text => this.setState({ text })}
-        ></TextInput>
-        <Button onPress={text => this.getPlanet()} title="Rechercher"></Button>
-
-        {/* <FlatList
+        <View style={styles.container}>
+          <Text style={styles.policeText}>
+            Choisissez une planète pour afficher ses informations !
+          </Text>
+          <Input
+            style={(styles.policeText, styles.input)}
+            right
+            icon="search1"
+            family="antdesign"
+            iconSize={14}
+            placeholder="Saisir une planète"
+            onChangeText={text => this.setState({ text })}
+          ></Input>
+          <Button
+            style={styles.button}
+            round size="small" 
+            color="#808080"
+            onPress={text => this.getPlanet()}
+          >Rechercher</Button>
+        </View>
+        <FlatList
           data={this.state.planètes}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <View>
-              <Text
-                onPress={() =>
-                  Linking.openURL(this.test_lien(item.saleInfo.buyLink))
-                }
-              >
-                Nom: {item.volumeInfo.title}
+            <View style={styles.infos}>
+              <Text style={styles.policeText}>
+                Host Name: {item.pl_hostname}
               </Text>
-              <View style={styles.vue_image}>
-                <Image
-                  style={styles.image}
-                  source={this.test_img(item.volumeInfo.imageLinks)}
-                />
-              </View>
-
-              <Button
-                onPress={() => {
-                  this.props.navigation.navigate("Details");
-                }}
-                title="details"
-              ></Button>
+              <Text style={styles.policeText}>
+                Planet Letter: {item.pl_letter}
+              </Text>
+              <Text style={styles.policeText}>Planet Name: {item.pl_name}</Text>
+              <Text style={styles.policeText}>
+                Discovery Mode: {item.pl_discmethod}
+              </Text>
+              <Text style={styles.policeText}>
+                Orbital Period (days): {item.pl_orbper}
+              </Text>
+              <Text style={styles.policeText}>
+                Date of Last Update: {item.rowupdate}
+              </Text>
             </View>
           )}
-        /> */}
+        />
       </View>
     );
   }
-
-  //   test_desc(description) {
-  //     if (description != undefined) {
-  //       return description.substring(0, 100);
-  //     } else {
-  //       return "";
-  //     }
-  //   }
-  //   test_img(image) {
-  //     if (image != undefined) {
-  //       return { uri: image.smallThumbnail };
-  //     } else {
-  //       return require("../img.jpeg");
-  //     }
-  //   }
-  //   test_date(date) {
-  //     if (date != undefined) {
-  //       return date;
-  //     } else {
-  //       return "";
-  //     }
-  //   }
-  //   test_lien(lien) {
-  //     if (lien != undefined) {
-  //       return lien;
-  //     } else {
-  //       return "https://play.google.com/store/books/404";
-  //     }
-  //   }
-
   getPlanet() {
     return fetch(
       //   "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=JSON&where=pl_kepflag=1" +
@@ -105,14 +80,39 @@ export default class Search extends React.Component {
       "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=JSON&where=pl_hostname like '" +
         this.state.text +
         "'"
+
+      //"https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=JSON&where=pl_hostname like 'Kepler-87'"
     )
       .then(response => response.json())
       .then(responseJson => {
-        alert(responseJson);
-        this.setState({ planètes: responseJson.items });
+        this.setState({ planètes: responseJson });
       })
       .catch(error => {
         console.error(error);
       });
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20
+  },
+  infos: {
+    marginBottom: 10,
+    marginLeft: 20
+  },
+  policeText: {
+    fontFamily: "Verdana"
+  },
+  input: {
+    marginTop: 30,
+    width: 200,
+    height: 40
+  },
+  button: {
+    marginTop: 40,
+    marginBottom: 50
+  }
+});

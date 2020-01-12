@@ -1,28 +1,26 @@
-// Affiche l'image du jour
+// Affiche les détails de l'accueil
 import React from "react";
-
 import { StyleSheet, View, ActivityIndicator, Image } from "react-native";
-
 import { ScrollView } from "react-native-gesture-handler";
-import { Button, Text } from 'galio-framework';
+import { Text } from 'galio-framework';
+
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { item: "", content: false };
   }
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
-        <Text muted style={styles.date}>Image du {this.state.item.date}</Text>
+        
         <Text h5 bold style={styles.title}>{this.state.item.title}</Text>
         <Image 
           style={styles.stretch}
           source={{uri: this.state.item.url}}
           PlaceholderContent={<ActivityIndicator />}
         />
-        <Button style={styles.button} round size="small" color="#808080" onPress={() => { this.props.navigation.navigate("DetailsAccueil");}}>Afficher l'explication</Button>
+        <Text style={styles.text}>{this.state.item.explanation}</Text>
         </ScrollView>
       </View>
     );
@@ -53,18 +51,17 @@ const styles = StyleSheet.create({
     height: 300,
     resizeMode: 'stretch',
     alignItems: 'center',
-    marginTop: 20,
+    marginLeft: 40,
   },
   title: {
     marginBottom: 20,
     textAlign: 'center',
   },
-  date: {
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  button: {
-    marginTop: 50,
-    marginLeft: 50,
-  },
+  text: {
+    marginTop: 30,
+    marginBottom: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    textAlign: 'justify',
+  }
 });
