@@ -9,12 +9,11 @@ import { Button, Text } from "galio-framework";
 
 import { connect } from "react-redux";
 
-
 class Accueil extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { item: "", content: false};
+    this.state = { item: "", content: false };
   }
   render() {
     return (
@@ -39,10 +38,11 @@ class Accueil extends React.Component {
             onPress={() => {
               this.props.navigation.navigate("DetailsAccueil");
             }}
-          >Afficher l'explication
+          >
+            Afficher l'explication
           </Button>
 
-              {/* <Block style={styles.slider}>
+          {/* <Block style={styles.slider}>
                 <Slider
                   disabled
                   activeColor="#F6A127"
@@ -71,7 +71,6 @@ class Accueil extends React.Component {
                 />
                 <Text>Valeur: {-50}</Text>
               </Block> */}
-              
         </ScrollView>
       </View>
     );
@@ -88,9 +87,7 @@ class Accueil extends React.Component {
       .catch(error => {
         console.error(error);
       });
-    }
   }
-<<<<<<< HEAD
   _toggle() {
     const action = {
       type: "TOGGLE",
@@ -99,8 +96,6 @@ class Accueil extends React.Component {
     this.props.dispatch(action);
   }
 }
-=======
->>>>>>> 12ff0101f2960d7d17fe68c38072dcb353c4916f
 
 const mapStateToProps = state => {
   return { item: "", content: false };
@@ -130,7 +125,7 @@ const styles = StyleSheet.create({
     marginLeft: 60
   }
   // slider: {
-  //   width: 250, 
+  //   width: 250,
   //   marginLeft: 20
   // },
   // colorMin: {
