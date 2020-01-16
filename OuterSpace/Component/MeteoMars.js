@@ -4,14 +4,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Table,
-  Image,
-  TextInput,
-  FlatList,
-  Button,
-  Linking,
-  WebView
+  FlatList
 } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+
 
 export default class Search extends React.Component {
     constructor(props) {
@@ -25,9 +21,7 @@ export default class Search extends React.Component {
     }
     
     render() {
-      return <View>
-        <Text>Météo de Mars</Text>
-          <View>
+      return <ScrollView>
             <Text>Latest Weather at Elysium Planitia</Text>
             <Text>InSight is taking daily weather measurements (temperature, wind, pressure) on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars’ equator. </Text>
             <Text>sol : {this.state.solJour}, saison : {this.state.infos.season}</Text>
@@ -46,9 +40,7 @@ export default class Search extends React.Component {
               }
             />
 
-          </View>
-
-        </View>;
+          </View>;
   }
 
   componentWillMount() {
