@@ -7,7 +7,7 @@ const SearchStackNavigator = createStackNavigator({
     screen: MeteoMars,
 
     navigationOptions: {
-      title: "Meteo Mars"
+      title: "Météo Mars"
     }
   }
 });

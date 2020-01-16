@@ -41,36 +41,6 @@ class Accueil extends React.Component {
           >
             Afficher l'explication
           </Button>
-
-          {/* <Block style={styles.slider}>
-                <Slider
-                  disabled
-                  activeColor="#F6A127"
-                  thumbStyle = {styles.colorMin}
-                  maximumValue={200}
-                  minimumValue={-200}
-                  value= {2}
-                />
-                <Text>Valeur: {this.state.value}</Text>
-                <Slider
-                  disabled
-                  activeColor="#E19426"
-                  thumbStyle = {styles.colorMax}
-                  maximumValue={200}
-                  minimumValue={-200}
-                  value={100}
-                />
-                <Text>Valeur: {100}</Text>
-                <Slider
-                  disabled
-                  activeColor="#AD6D11"
-                  thumbStyle ={styles.colorAverage}
-                  maximumValue={200}
-                  minimumValue={-200}
-                  value={-50}
-                />
-                <Text>Valeur: {-50}</Text>
-              </Block> */}
         </ScrollView>
       </View>
     );
@@ -124,17 +94,4 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginLeft: 60
   }
-  // slider: {
-  //   width: 250,
-  //   marginLeft: 20
-  // },
-  // colorMin: {
-  //   borderColor: '#F6A127'
-  // },
-  // colorMax: {
-  //   borderColor: '#E19426'
-  // },
-  // colorAverage: {
-  //   borderColor: '#AD6D11'
-  // }
 });
