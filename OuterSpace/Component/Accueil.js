@@ -5,22 +5,22 @@ import { StyleSheet, View, ActivityIndicator, Image } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
 
-import { Button } from "galio-framework";
+import { Button, Text } from "galio-framework";
 
 export default class Accueil extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { item: "", content: false };
+    this.state = { item: "", content: false};
   }
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <Text muted style={styles.date}>
+          <Text muted style={styles.text}>
             Image du {this.state.item.date}
           </Text>
-          <Text h5 bold style={styles.title}>
+          <Text h5 bold style={styles.text}>
             {this.state.item.title}
           </Text>
           <Image
@@ -36,9 +36,39 @@ export default class Accueil extends React.Component {
             onPress={() => {
               this.props.navigation.navigate("DetailsAccueil");
             }}
-          >
-            Afficher l'explication
+          >Afficher l'explication
           </Button>
+
+              {/* <Block style={styles.slider}>
+                <Slider
+                  disabled
+                  activeColor="#F6A127"
+                  thumbStyle = {styles.colorMin}
+                  maximumValue={200}
+                  minimumValue={-200}
+                  value= {2}
+                />
+                <Text>Valeur: {this.state.value}</Text>
+                <Slider
+                  disabled
+                  activeColor="#E19426"
+                  thumbStyle = {styles.colorMax}
+                  maximumValue={200}
+                  minimumValue={-200}
+                  value={100}
+                />
+                <Text>Valeur: {100}</Text>
+                <Slider
+                  disabled
+                  activeColor="#AD6D11"
+                  thumbStyle ={styles.colorAverage}
+                  maximumValue={200}
+                  minimumValue={-200}
+                  value={-50}
+                />
+                <Text>Valeur: {-50}</Text>
+              </Block> */}
+              
         </ScrollView>
       </View>
     );
@@ -54,13 +84,12 @@ export default class Accueil extends React.Component {
       .catch(error => {
         console.error(error);
       });
+    }
   }
-}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     marginTop: 20
   },
@@ -71,16 +100,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20
   },
-  title: {
-    marginBottom: 20,
-    textAlign: "center"
-  },
-  date: {
+  text: {
     marginBottom: 20,
     textAlign: "center"
   },
   button: {
     marginTop: 50,
-    marginLeft: 50
+    marginLeft: 60
   }
+  // slider: {
+  //   width: 250, 
+  //   marginLeft: 20
+  // },
+  // colorMin: {
+  //   borderColor: '#F6A127'
+  // },
+  // colorMax: {
+  //   borderColor: '#E19426'
+  // },
+  // colorAverage: {
+  //   borderColor: '#AD6D11'
+  // }
 });
