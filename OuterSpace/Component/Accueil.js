@@ -1,9 +1,10 @@
 // Affiche l'image du jour
 import React from "react";
 
-import { StyleSheet, Text, View, ActivityIndicator, Image } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Image } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
+
 import { Button } from "galio-framework";
 
 export default class Accueil extends React.Component {
@@ -12,29 +13,26 @@ export default class Accueil extends React.Component {
 
     this.state = { item: "", content: false };
   }
-  componentHideAndShow = () => {
-    this.setState(previousState => ({ content: !previousState.content }));
-  };
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <Text>Image du jour du : {this.state.item.date}</Text>
-          <Text>Titre : {this.state.item.title}</Text>
+          <Text muted style={styles.date}>
+            Image du {this.state.item.date}
+          </Text>
+          <Text h5 bold style={styles.title}>
+            {this.state.item.title}
+          </Text>
           <Image
             style={styles.stretch}
             source={{ uri: this.state.item.url }}
             PlaceholderContent={<ActivityIndicator />}
           />
-
-          {this.state.content ? (
-            <Text> {this.state.item.explanation} </Text>
-          ) : null}
           <Button
+            style={styles.button}
             round
             size="small"
             color="#808080"
-            type="outline"
             onPress={() => {
               this.props.navigation.navigate("DetailsAccueil");
             }}
@@ -64,12 +62,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
     marginTop: 20
   },
   stretch: {
-    width: 200,
-    height: 200,
-    resizeMode: "stretch"
+    width: 300,
+    height: 300,
+    resizeMode: "stretch",
+    alignItems: "center",
+    marginTop: 20
+  },
+  title: {
+    marginBottom: 20,
+    textAlign: "center"
+  },
+  date: {
+    marginBottom: 20,
+    textAlign: "center"
+  },
+  button: {
+    marginTop: 50,
+    marginLeft: 50
   }
 });

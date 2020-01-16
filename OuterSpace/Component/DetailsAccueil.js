@@ -1,30 +1,26 @@
+// Affiche les détails de l'accueil
 import React from "react";
-import { StyleSheet, Text, View, ActivityIndicator, Image } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer } from "react-navigation";
-import Accueil from "../Component/Accueil";
-import DetailsAccueil from "../Component/DetailsAccueil";
+import { Text } from 'galio-framework';
 
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = { item: "", content: false };
   }
-  componentHideAndShow = () => {
-    this.setState(previousState => ({ content: !previousState.content }));
-  };
   render() {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <Text>{this.state.item.title}</Text>
-          <Image
-            style={styles.stretch}
-            source={{ uri: this.state.item.url }}
-            PlaceholderContent={<ActivityIndicator />}
-          />
-          <Text>{this.state.item.explanation}</Text>
+        
+        <Text h5 bold style={styles.title}>{this.state.item.title}</Text>
+        <Image 
+          style={styles.stretch}
+          source={{uri: this.state.item.url}}
+          PlaceholderContent={<ActivityIndicator />}
+        />
+        <Text style={styles.text}>{this.state.item.explanation}</Text>
         </ScrollView>
       </View>
     );
@@ -46,14 +42,26 @@ export default class Search extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 20
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    marginTop: 20,
   },
   stretch: {
-    width: 200,
-    height: 200,
-    resizeMode: "stretch"
+    width: 300,
+    height: 300,
+    resizeMode: 'stretch',
+    alignItems: 'center',
+    marginLeft: 40,
+  },
+  title: {
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  text: {
+    marginTop: 30,
+    marginBottom: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    textAlign: 'justify',
   }
 });

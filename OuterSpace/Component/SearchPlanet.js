@@ -1,4 +1,4 @@
-// vue de la recherche planette
+// vue de la recherche planète
 // mettre un bouton et input comme pour
 // les livres, et afficher une flatlist
 import React from "react";
@@ -7,13 +7,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TextInput,
   FlatList,
-  Button,
-  Linking,
-  WebView
 } from "react-native";
+
+import { Button, Input } from 'galio-framework';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -32,15 +29,21 @@ export default class Search extends React.Component {
           <Text style={styles.policeText}>
             Choisissez une planète pour afficher ses informations !
           </Text>
-          <TextInput
+          <Input
             style={(styles.policeText, styles.input)}
+            right
+            icon="search1"
+            family="antdesign"
+            iconSize={14}
             placeholder="Saisir une planète"
             onChangeText={text => this.setState({ text })}
-          ></TextInput>
+          ></Input>
           <Button
+            style={styles.button}
+            round size="small" 
+            color="#808080"
             onPress={text => this.getPlanet()}
-            title="Rechercher"
-          ></Button>
+          >Rechercher</Button>
         </View>
         <FlatList
           data={this.state.planètes}
@@ -63,49 +66,12 @@ export default class Search extends React.Component {
               <Text style={styles.policeText}>
                 Date of Last Update: {item.rowupdate}
               </Text>
-              {/* 
-              <Button
-                onPress={() => {
-                  this.props.navigation.navigate("Details");
-                }}
-                title="details"
-              ></Button> */}
             </View>
           )}
         />
       </View>
     );
   }
-
-  //   test_desc(description) {
-  //     if (description != undefined) {
-  //       return description.substring(0, 100);
-  //     } else {
-  //       return "";
-  //     }
-  //   }
-  //   test_img(image) {
-  //     if (image != undefined) {
-  //       return { uri: image.smallThumbnail };
-  //     } else {
-  //       return require("../img.jpeg");
-  //     }
-  //   }
-  //   test_date(date) {
-  //     if (date != undefined) {
-  //       return date;
-  //     } else {
-  //       return "";
-  //     }
-  //   }
-  //   test_lien(lien) {
-  //     if (lien != undefined) {
-  //       return lien;
-  //     } else {
-  //       return "https://play.google.com/store/books/404";
-  //     }
-  //   }
-
   getPlanet() {
     return fetch(
       //   "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=JSON&where=pl_kepflag=1" +
@@ -135,12 +101,18 @@ const styles = StyleSheet.create({
   },
   infos: {
     marginBottom: 10,
-    marginLeft: 5
+    marginLeft: 20
   },
   policeText: {
     fontFamily: "Verdana"
   },
   input: {
-    width: 150
+    marginTop: 30,
+    width: 200,
+    height: 40
+  },
+  button: {
+    marginTop: 40,
+    marginBottom: 50
   }
 });
