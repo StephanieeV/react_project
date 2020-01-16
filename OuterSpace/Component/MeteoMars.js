@@ -6,8 +6,6 @@ import {
   View,
   FlatList
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-
 
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -25,13 +23,9 @@ export default class Search extends React.Component {
     }
     
     render() {
-<<<<<<< HEAD
       return (
       <View style={styles.container}>
         <ScrollView>
-=======
-      return <ScrollView>
->>>>>>> fe0e9b1138f68a05a8699774b848984961d34860
             <Text>Latest Weather at Elysium Planitia</Text>
             <Text style={styles.text}>InSight is taking daily weather measurements (temperature, wind, pressure) on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars’ equator. </Text>
             <Text style={styles.text}>sol : {this.state.solJour} - saison : {this.state.infos.season}</Text>
@@ -42,7 +36,6 @@ export default class Search extends React.Component {
             <FlatList
               data= {this.state.infosWeek}
               keyExtractor = {item => ''+item.sol}
-<<<<<<< HEAD
               renderItem={({item}) => (
             <View>
               <Text style={styles.text}>sol : {item.sol} - saison : {item.season}</Text>
@@ -63,19 +56,6 @@ export default class Search extends React.Component {
         </ScrollView>
       </View>
     );
-=======
-              renderItem={({item}) =>
-                <View>
-              <Text>sol : {item.sol} - season : {item.season}</Text>
-                  <Text>min temperature : {item.air.temperature.minimum }°C</Text>
-                  <Text>max temperature : {item.air.temperature.maximum }°C</Text>
-                  <Text>average temperature : {item.air.temperature.average }°C</Text>
-                </View>
-              }
-            />
-
-          </ScrollView>;
->>>>>>> fe0e9b1138f68a05a8699774b848984961d34860
   }
 
   componentDidMount() {
