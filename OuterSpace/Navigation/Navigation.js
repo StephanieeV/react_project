@@ -1,14 +1,11 @@
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome5";
-// import Icon from "react-native-ionicons";
-//import { Icon } from "react-native-elements";
 import Accueil from "../Component/Accueil";
 import MeteoMars from "../Component/MeteoMars";
 import { createAppContainer } from "react-navigation";
 import SearchPlanet from "../Component/SearchPlanet";
 import DetailsAccueil from "../Component/DetailsAccueil";
-import { createStackNavigator, HeaderBackButton } from "react-navigation-stack";
-import { Button } from "galio-framework";
+import { createStackNavigator } from "react-navigation-stack";
 
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
@@ -26,9 +23,6 @@ const AccueilStackNavigator = createStackNavigator({
     screen: DetailsAccueil,
     navigationOptions: {
       title: "Description",
-      //   headerBackTitleStyle: {
-      //     color: "#E19426"
-      //   },
       headerTitleStyle: {
         color: "gray"
       },
@@ -72,7 +66,7 @@ const BottomTabNavigator = createBottomTabNavigator({
       }
     }
   },
-  MeteoMars: {
+  "Météo Mars": {
     screen: MeteoMarsStackNavigator,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
@@ -84,7 +78,7 @@ const BottomTabNavigator = createBottomTabNavigator({
       }
     }
   },
-  SearchPlanet: {
+  "Recherche Planète": {
     screen: SearchPlanetStackNavigator,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
