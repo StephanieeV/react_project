@@ -2,17 +2,13 @@
 // mettre un bouton et input comme pour
 // les livres, et afficher une flatlist
 import React from "react";
+import { connect } from "react-redux";
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 
-import { Button, Input } from 'galio-framework';
+import { Button, Input } from "galio-framework";
 
-export default class Search extends React.Component {
+class SearchPlanet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,10 +36,13 @@ export default class Search extends React.Component {
           ></Input>
           <Button
             style={styles.button}
-            round size="small" 
+            round
+            size="small"
             color="#808080"
             onPress={text => this.getPlanet()}
-          >Rechercher</Button>
+          >
+            Rechercher
+          </Button>
         </View>
         <FlatList
           data={this.state.planètes}
@@ -72,6 +71,13 @@ export default class Search extends React.Component {
       </View>
     );
   }
+  _update() {
+    const action = {
+      type: "UPDATE",
+      value: this.state.item
+    };
+    this.props.dispatch(action);
+  }
   getPlanet() {
     return fetch(
       //   "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?&table=exoplanets&format=JSON&where=pl_kepflag=1" +
@@ -92,6 +98,16 @@ export default class Search extends React.Component {
       });
   }
 }
+const mapStateToProps = state => {
+  return {
+    text: "",
+    text_titre: "",
+    planètes: []
+  };
+};
+
+export default connect(mapStateToProps)(SearchPlanet);
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",

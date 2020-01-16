@@ -5,9 +5,10 @@ import { StyleSheet, View, ActivityIndicator, Image } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
 
-import { Button } from "galio-framework";
+import { Button, Text } from "galio-framework";
+import { connect } from "react-redux";
 
-export default class Accueil extends React.Component {
+class Accueil extends React.Component {
   constructor(props) {
     super(props);
 
@@ -43,6 +44,7 @@ export default class Accueil extends React.Component {
       </View>
     );
   }
+
   componentDidMount() {
     return fetch(
       "https://api.nasa.gov/planetary/apod?api_key=PAQslsDyD4gonPcnIngcaOv2w9wfJXYAysOEi5OY"
@@ -55,7 +57,20 @@ export default class Accueil extends React.Component {
         console.error(error);
       });
   }
+  _toggle() {
+    const action = {
+      type: "TOGGLE",
+      value: this.state.item
+    };
+    this.props.dispatch(action);
+  }
 }
+
+const mapStateToProps = state => {
+  return { item: "", content: false };
+};
+
+export default connect(mapStateToProps)(Accueil);
 
 const styles = StyleSheet.create({
   container: {
