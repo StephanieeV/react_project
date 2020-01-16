@@ -50,20 +50,33 @@ class SearchPlanet extends React.Component {
           renderItem={({ item }) => (
             <View style={styles.infos}>
               <Text style={styles.policeText}>
-                Host Name: {item.pl_hostname}
+                Host Name:
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {item.pl_hostname}
               </Text>
               <Text style={styles.policeText}>
-                Planet Letter: {item.pl_letter}
-              </Text>
-              <Text style={styles.policeText}>Planet Name: {item.pl_name}</Text>
-              <Text style={styles.policeText}>
-                Discovery Mode: {item.pl_discmethod}
+                Planet Letter:
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {item.pl_letter}
               </Text>
               <Text style={styles.policeText}>
-                Orbital Period (days): {item.pl_orbper}
+                Planet Name:
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {item.pl_name}
               </Text>
               <Text style={styles.policeText}>
-                Date of Last Update: {item.rowupdate}
+                Discovery Mode:
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {item.pl_discmethod}
+              </Text>
+              <Text style={styles.policeText}>
+                Orbital Period (days):
+                &nbsp;&nbsp;&nbsp;
+                {item.pl_orbper}
+              </Text>
+              <Text style={styles.policeText, styles.space}>
+                Date of Last Update:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {item.rowupdate}
               </Text>
             </View>
           )}
@@ -113,7 +126,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20
+    marginTop: 20,
+    fontFamily: "Verdana"
   },
   infos: {
     marginBottom: 10,
@@ -130,5 +144,8 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 40,
     marginBottom: 50
+  },
+  space: {
+    marginBottom: 30
   }
 });
