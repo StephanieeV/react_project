@@ -35,12 +35,14 @@ export default class Search extends React.Component {
               renderItem={({item}) =>
                 <View>
               <Text>sol : {item.sol} - season : {item.season}</Text>
+                  <Text>min temperature : {item.air.temperature.minimum }°C</Text>
+                  <Text>max temperature : {item.air.temperature.maximum }°C</Text>
                   <Text>average temperature : {item.air.temperature.average }°C</Text>
                 </View>
               }
             />
 
-          </View>;
+          </ScrollView>;
   }
 
   componentWillMount() {
