@@ -3,6 +3,7 @@
 // les livres, et afficher une flatlist
 import React from "react";
 import { connect } from "react-redux";
+import { ScrollView } from "react-native-gesture-handler";
 
 import { StyleSheet, Text, View, FlatList } from "react-native";
 
@@ -21,66 +22,68 @@ class SearchPlanet extends React.Component {
   render() {
     return (
       <View>
-        <View style={styles.container}>
-          <Text style={styles.policeText}>
-            Choisissez une planète pour afficher ses informations !
-          </Text>
-          <Input
-            style={(styles.policeText, styles.input)}
-            right
-            icon="search1"
-            family="antdesign"
-            iconSize={14}
-            placeholder="Saisir une planète"
-            onChangeText={text => this.setState({ text })}
-          ></Input>
-          <Button
-            style={styles.button}
-            round
-            size="small"
-            color="#808080"
-            onPress={text => this.getPlanet()}
-          >
-            Rechercher
-          </Button>
-        </View>
-        <FlatList
-          data={this.state.planètes}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.infos}>
-              <Text style={styles.policeText}>
-                Host Name:
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {item.pl_hostname}
-              </Text>
-              <Text style={styles.policeText}>
-                Planet Letter:
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {item.pl_letter}
-              </Text>
-              <Text style={styles.policeText}>
-                Planet Name:
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {item.pl_name}
-              </Text>
-              <Text style={styles.policeText}>
-                Discovery Mode:
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {item.pl_discmethod}
-              </Text>
-              <Text style={styles.policeText}>
-                Orbital Period (days):
-                &nbsp;&nbsp;&nbsp;
-                {item.pl_orbper}
-              </Text>
-              <Text style={styles.policeText, styles.space}>
-                Date of Last Update:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {item.rowupdate}
-              </Text>
-            </View>
-          )}
-        />
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={styles.policeText}>
+              Choisissez une planète pour afficher ses informations !
+            </Text>
+            <Input
+              style={(styles.policeText, styles.input)}
+              right
+              icon="search1"
+              family="antdesign"
+              iconSize={14}
+              placeholder="Saisir une planète"
+              onChangeText={text => this.setState({ text })}
+            ></Input>
+            <Button
+              style={styles.button}
+              round
+              size="small"
+              color="#808080"
+              onPress={text => this.getPlanet()}
+            >
+              Rechercher
+            </Button>
+          </View>
+          <FlatList
+            data={this.state.planètes}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => (
+              <View style={styles.infos}>
+                <Text style={styles.policeText}>
+                  Host Name:
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {item.pl_hostname}
+                </Text>
+                <Text style={styles.policeText}>
+                  Planet Letter:
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {item.pl_letter}
+                </Text>
+                <Text style={styles.policeText}>
+                  Planet Name:
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {item.pl_name}
+                </Text>
+                <Text style={styles.policeText}>
+                  Discovery Mode:
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {item.pl_discmethod}
+                </Text>
+                <Text style={styles.policeText}>
+                  Orbital Period (days): &nbsp;&nbsp;&nbsp;
+                  {item.pl_orbper}
+                </Text>
+                <Text style={(styles.policeText, styles.space)}>
+                  Date of Last
+                  Update:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {item.rowupdate}
+                </Text>
+              </View>
+            )}
+          />
+        </ScrollView>
       </View>
     );
   }
