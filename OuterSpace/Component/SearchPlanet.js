@@ -108,9 +108,6 @@ class SearchPlanet extends React.Component {
       .then(response => response.json())
       .then(responseJson => {
         this.setState({ planètes: responseJson });
-      })
-      .catch(error => {
-        console.error(error);
       });
   }
 }

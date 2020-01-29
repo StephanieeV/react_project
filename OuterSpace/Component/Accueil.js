@@ -53,9 +53,6 @@ class Accueil extends React.Component {
       .then(response => response.json())
       .then(responseJson => {
         this.setState({ item: responseJson });
-      })
-      .catch(error => {
-        console.error(error);
       });
   }
   _toggle() {
